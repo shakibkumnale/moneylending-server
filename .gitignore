@@ -1,3 +1,4 @@
 node_modules
 .env
 /src/controllers/loanController copy.js
+.vercel
