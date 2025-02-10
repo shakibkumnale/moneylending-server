@@ -2,107 +2,118 @@ import { AsyncHandler } from "../utils/AsyncHandler.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { Loan } from "../models/Loan.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
-// import validator from "validator";
+import multer from "multer";
+import path from "path";
+import fs from "fs";
+
+// Configure multer for file uploads
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
 // Create a new loan
 const createLoan = AsyncHandler(async (req, res) => {
-    const {
-        borrowerName,
-        borrowerPhone,
-        loanAmount,
-        interestRate,
-        startDate,
-        emiAmount,
-        emiDueDate,
-        numberOfEmis
-    } = req.body;
-    console.log(req.file);
-    console.log(req.body);
+    upload.single('avatar')(req, res, async (err) => {
+        if (err) {
+            return res.status(400).json(new ApiResponse(400, "File upload error"));
+        }
 
-    // Validate input
-    if (!borrowerName?.trim() || !borrowerPhone?.trim()) {
-        return res.status(400).json(
-            new ApiResponse(400, "Borrower name and phone are required")
-        );
-    }
+        const {
+            borrowerName,
+            borrowerPhone,
+            loanAmount,
+            interestRate,
+            startDate,
+            emiAmount,
+            emiDueDate,
+            numberOfEmis
+        } = req.body;
+        console.log(req.file);
+        console.log(req.body);
 
-    if (!loanAmount || loanAmount <= 0) {
-        return res.status(400).json(
-            new ApiResponse(400, "Valid loan amount is required")
-        );
-    }
+        // Validate input
+        if (!borrowerName?.trim() || !borrowerPhone?.trim()) {
+            return res.status(400).json(
+                new ApiResponse(400, "Borrower name and phone are required")
+            );
+        }
 
-    if (!interestRate || interestRate < 0) {
-        return res.status(400).json(
-            new ApiResponse(400, "Valid interest rate is required")
-        );
-    }
+        if (!loanAmount || loanAmount <= 0) {
+            return res.status(400).json(
+                new ApiResponse(400, "Valid loan amount is required")
+            );
+        }
 
-    if (!startDate || !emiAmount || !emiDueDate || !numberOfEmis) {
-        return res.status(400).json(
-            new ApiResponse(400, "Loan schedule details are required")
-        );
-    }
-    const parsedStartDate = new Date(startDate);
-    const parsedEmiDueDate = new Date(emiDueDate);
+        if (!interestRate || interestRate < 0) {
+            return res.status(400).json(
+                new ApiResponse(400, "Valid interest rate is required")
+            );
+        }
 
-    const avatarLocalPath = req.file?.path
-    console.log(avatarLocalPath);
-    
-   
-    if (!avatarLocalPath) {
-        return res.status(400).json(
-            new ApiResponse(400, "avatar file is required"));
-    }
-    const avatar = await uploadOnCloudinary(avatarLocalPath)
-    if (!avatar) {
-        return res.status(400).json(
-            new ApiResponse(400,avatar, "server error while uploading avatar"));
-    }
-    console.log(avatar.url);
+        if (!startDate || !emiAmount || !emiDueDate || !numberOfEmis) {
+            return res.status(400).json(
+                new ApiResponse(400, "Loan schedule details are required")
+            );
+        }
+        const parsedStartDate = new Date(startDate);
+        const parsedEmiDueDate = new Date(emiDueDate);
 
-    // Generate EMI schedule
-    const emisSchedule = [];
-    let currentDate = new Date(parsedStartDate);
-    const dueDay = new Date(parsedEmiDueDate).getDate();
-    const start = new Date(startDate);
-    const end = new Date(emiDueDate);
-    const Time =(end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());                                                                                                                                                                       
-    const totalAmount =  loanAmount*interestRate*Time/100 + +loanAmount;
-    console.log(totalAmount);
-const emiAmount2 = totalAmount/numberOfEmis;
-    for (let i = 0; i < numberOfEmis; i++) {
-        currentDate.setDate(dueDay);
-        
-        emisSchedule.push({
-            dueDate: new Date(currentDate),
-            amount: emiAmount2,
-            status: "PENDING"
+        if (!req.file) {
+            return res.status(400).json(
+                new ApiResponse(400, "Avatar file is required")
+            );
+        }
+
+        // Upload file to Cloudinary
+        const avatar = await uploadOnCloudinary(req.file.buffer, req.file.originalname);
+        if (!avatar) {
+            return res.status(400).json(
+                new ApiResponse(400, "Server error while uploading avatar")
+            );
+        }
+        console.log(avatar.url);
+
+        // Generate EMI schedule
+        const emisSchedule = [];
+        let currentDate = new Date(parsedStartDate);
+        const dueDay = new Date(parsedEmiDueDate).getDate();
+        const start = new Date(startDate);
+        const end = new Date(emiDueDate);
+        const Time = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+        const totalAmount = loanAmount * interestRate * Time / 100 + +loanAmount;
+        console.log(totalAmount);
+        const emiAmount2 = totalAmount / numberOfEmis;
+        for (let i = 0; i < numberOfEmis; i++) {
+            currentDate.setDate(dueDay);
+
+            emisSchedule.push({
+                dueDate: new Date(currentDate),
+                amount: emiAmount2,
+                status: "PENDING"
+            });
+
+            currentDate.setMonth(currentDate.getMonth() + 1);
+        }
+
+        // Calculate total amount to be repaid
+        // const totalAmount = emiAmount * numberOfEmis;
+
+        const loan = await Loan.create({
+            borrowerName,
+            borrowerPhone,
+            loanAmount,
+            interestRate,
+            startDate: new Date(startDate),
+            totalAmount,
+            borrowerPhoto: avatar.url || "",
+            remainingAmount: totalAmount,
+            emisSchedule,
+            status: "ACTIVE"
         });
 
-        currentDate.setMonth(currentDate.getMonth() + 1);
-    }
-
-
-    // Calculate total amount to be repaid
-    // const totalAmount = emiAmount * numberOfEmis;
-
-    const loan = await Loan.create({
-        borrowerName,
-        borrowerPhone,
-        loanAmount,
-        interestRate,
-        startDate: new Date(startDate),
-        totalAmount,
-        borrowerPhoto: avatar.url || "",
-        remainingAmount: totalAmount,
-        emisSchedule,
-        status: "ACTIVE"
+        return res.status(201).json(
+            new ApiResponse(201, loan, "Loan created successfully")
+        );
     });
-
-    return res.status(201).json(
-        new ApiResponse(201, loan, "Loan created successfully")
-    );
 });
 
 // Get all loans
