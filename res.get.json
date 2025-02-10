@@ -1,0 +1,231 @@
+{
+    "statusCode": 200,
+    "data": [
+        {
+            "_id": "67979cf8791326a73f476c6d",
+            "borrowerName": "shakib",
+            "borrowerPhone": "9008387247",
+            "loanAmount": 12000,
+            "interestRate": 3,
+            "startDate": "2025-02-02T00:00:00.000Z",
+            "totalAmount": 12360,
+            "remainingAmount": 12360,
+            "emisSchedule": [
+                {
+                    "dueDate": "2025-02-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979cf8791326a73f476c6e",
+                    "createdAt": "2025-01-27T14:49:28.078Z",
+                    "updatedAt": "2025-01-27T14:49:28.078Z"
+                },
+                {
+                    "dueDate": "2025-03-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979cf8791326a73f476c6f",
+                    "createdAt": "2025-01-27T14:49:28.078Z",
+                    "updatedAt": "2025-01-27T14:49:28.078Z"
+                },
+                {
+                    "dueDate": "2025-04-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979cf8791326a73f476c70",
+                    "createdAt": "2025-01-27T14:49:28.078Z",
+                    "updatedAt": "2025-01-27T14:49:28.078Z"
+                },
+                {
+                    "dueDate": "2025-05-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979cf8791326a73f476c71",
+                    "createdAt": "2025-01-27T14:49:28.078Z",
+                    "updatedAt": "2025-01-27T14:49:28.078Z"
+                },
+                {
+                    "dueDate": "2025-06-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979cf8791326a73f476c72",
+                    "createdAt": "2025-01-27T14:49:28.078Z",
+                    "updatedAt": "2025-01-27T14:49:28.078Z"
+                },
+                {
+                    "dueDate": "2025-07-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979cf8791326a73f476c73",
+                    "createdAt": "2025-01-27T14:49:28.079Z",
+                    "updatedAt": "2025-01-27T14:49:28.079Z"
+                },
+                {
+                    "dueDate": "2025-08-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979cf8791326a73f476c74",
+                    "createdAt": "2025-01-27T14:49:28.079Z",
+                    "updatedAt": "2025-01-27T14:49:28.079Z"
+                },
+                {
+                    "dueDate": "2025-09-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979cf8791326a73f476c75",
+                    "createdAt": "2025-01-27T14:49:28.079Z",
+                    "updatedAt": "2025-01-27T14:49:28.079Z"
+                },
+                {
+                    "dueDate": "2025-10-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979cf8791326a73f476c76",
+                    "createdAt": "2025-01-27T14:49:28.079Z",
+                    "updatedAt": "2025-01-27T14:49:28.079Z"
+                },
+                {
+                    "dueDate": "2025-11-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979cf8791326a73f476c77",
+                    "createdAt": "2025-01-27T14:49:28.079Z",
+                    "updatedAt": "2025-01-27T14:49:28.079Z"
+                },
+                {
+                    "dueDate": "2025-12-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979cf8791326a73f476c78",
+                    "createdAt": "2025-01-27T14:49:28.079Z",
+                    "updatedAt": "2025-01-27T14:49:28.079Z"
+                },
+                {
+                    "dueDate": "2026-01-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979cf8791326a73f476c79",
+                    "createdAt": "2025-01-27T14:49:28.079Z",
+                    "updatedAt": "2025-01-27T14:49:28.079Z"
+                }
+            ],
+            "status": "ACTIVE",
+            "createdAt": "2025-01-27T14:49:28.079Z",
+            "updatedAt": "2025-01-27T14:49:28.079Z",
+            "__v": 0
+        },
+        {
+            "_id": "67979b69509a5ca43b6c2256",
+            "borrowerName": "shakib",
+            "borrowerPhone": "9008387247",
+            "loanAmount": 12000,
+            "interestRate": 3,
+            "startDate": "2025-02-02T00:00:00.000Z",
+            "totalAmount": 12360,
+            "remainingAmount": 12360,
+            "emisSchedule": [
+                {
+                    "dueDate": "2025-02-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979b69509a5ca43b6c2257",
+                    "createdAt": "2025-01-27T14:42:49.613Z",
+                    "updatedAt": "2025-01-27T14:42:49.613Z"
+                },
+                {
+                    "dueDate": "2025-03-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979b69509a5ca43b6c2258",
+                    "createdAt": "2025-01-27T14:42:49.613Z",
+                    "updatedAt": "2025-01-27T14:42:49.613Z"
+                },
+                {
+                    "dueDate": "2025-04-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979b69509a5ca43b6c2259",
+                    "createdAt": "2025-01-27T14:42:49.613Z",
+                    "updatedAt": "2025-01-27T14:42:49.613Z"
+                },
+                {
+                    "dueDate": "2025-05-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979b69509a5ca43b6c225a",
+                    "createdAt": "2025-01-27T14:42:49.614Z",
+                    "updatedAt": "2025-01-27T14:42:49.614Z"
+                },
+                {
+                    "dueDate": "2025-06-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979b69509a5ca43b6c225b",
+                    "createdAt": "2025-01-27T14:42:49.614Z",
+                    "updatedAt": "2025-01-27T14:42:49.614Z"
+                },
+                {
+                    "dueDate": "2025-07-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979b69509a5ca43b6c225c",
+                    "createdAt": "2025-01-27T14:42:49.614Z",
+                    "updatedAt": "2025-01-27T14:42:49.614Z"
+                },
+                {
+                    "dueDate": "2025-08-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979b69509a5ca43b6c225d",
+                    "createdAt": "2025-01-27T14:42:49.614Z",
+                    "updatedAt": "2025-01-27T14:42:49.614Z"
+                },
+                {
+                    "dueDate": "2025-09-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979b69509a5ca43b6c225e",
+                    "createdAt": "2025-01-27T14:42:49.614Z",
+                    "updatedAt": "2025-01-27T14:42:49.614Z"
+                },
+                {
+                    "dueDate": "2025-10-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979b69509a5ca43b6c225f",
+                    "createdAt": "2025-01-27T14:42:49.614Z",
+                    "updatedAt": "2025-01-27T14:42:49.614Z"
+                },
+                {
+                    "dueDate": "2025-11-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979b69509a5ca43b6c2260",
+                    "createdAt": "2025-01-27T14:42:49.614Z",
+                    "updatedAt": "2025-01-27T14:42:49.614Z"
+                },
+                {
+                    "dueDate": "2025-12-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979b69509a5ca43b6c2261",
+                    "createdAt": "2025-01-27T14:42:49.614Z",
+                    "updatedAt": "2025-01-27T14:42:49.614Z"
+                },
+                {
+                    "dueDate": "2026-01-02T00:00:00.000Z",
+                    "amount": 1030,
+                    "status": "PENDING",
+                    "_id": "67979b69509a5ca43b6c2262",
+                    "createdAt": "2025-01-27T14:42:49.614Z",
+                    "updatedAt": "2025-01-27T14:42:49.614Z"
+                }
+            ],
+            "status": "ACTIVE",
+            "createdAt": "2025-01-27T14:42:49.615Z",
+            "updatedAt": "2025-01-27T14:42:49.615Z",
+            "__v": 0
+        }
+    ],
+    "message": "Loans fetched successfully",
+    "success": true
+}

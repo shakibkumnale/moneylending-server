@@ -1,0 +1,16 @@
+backend/
+├── src/
+│   ├── config/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middlewares/
+│   ├── services/
+│   ├── utils/
+│   ├── index.js
+│   └── app.js
+├── .env 
+├── .gitignore
+├── package.json
+├── README.md
+└── docker-compose.yml (optional for containers later)
