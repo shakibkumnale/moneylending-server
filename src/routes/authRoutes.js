@@ -17,7 +17,7 @@ const router = express.Router();
 router.post(
     "/",
   
-    upload.single("borrowerPhoto"), // Middleware for handling file upload
+    // upload.single("borrowerPhoto"), // Middleware for handling file upload
     createLoan
 );
 
